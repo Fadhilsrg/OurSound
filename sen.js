@@ -507,10 +507,6 @@ function toggleLagu() {
   }
 }
 
-document.getElementById("playbut").addEventListener("click", function () {
-  toggleLagu();
-});
-
 var currentSongIndex = getRandomIndex();
 
 function getRandomIndex() {
@@ -546,10 +542,17 @@ document.getElementById("nextbut").addEventListener("click", function () {
   playNext();
 });
 
-// Function to handle play/pause toggle
-function togglePlayPause(button) {
-  const allButtons = document.querySelectorAll(".lagu i.bi-play-circle-fill");
+// Event listener for the master play button
+document.getElementById("playbut").addEventListener("click", function () {
+  toggleMasterPlayPause();
+  toggleLagu();
+});
 
+function toggleIndividualPlayPause(button) {
+  const isPlaying = button.classList.contains("bi-pause-circle-fill");
+
+  // Pause all other songs
+  const allButtons = document.querySelectorAll(".lagu i.bi-pause-circle-fill");
   allButtons.forEach(function (otherButton) {
     if (otherButton !== button) {
       otherButton.classList.remove("bi-pause-circle-fill");
@@ -558,15 +561,19 @@ function togglePlayPause(button) {
     }
   });
 
-  if (button.classList.contains("bi-play-circle-fill")) {
-    button.classList.remove("bi-play-circle-fill");
-    button.classList.add("bi-pause-circle-fill");
-    // Call a function to handle play action, e.g., playLagu(button.id);
-  } else {
+  // Toggle play/pause for the clicked song
+  if (isPlaying) {
     button.classList.remove("bi-pause-circle-fill");
     button.classList.add("bi-play-circle-fill");
     // Call a function to handle pause action, e.g., pauseLagu();
+  } else {
+    button.classList.remove("bi-play-circle-fill");
+    button.classList.add("bi-pause-circle-fill");
+    // Call a function to handle play action, e.g., playLagu(button.id);
   }
+
+  // Update the master play button
+  updateMasterPlayButton();
 }
 
 // Add event listeners to all play buttons in container3
@@ -574,9 +581,42 @@ document
   .querySelectorAll(".lagu i.bi-play-circle-fill")
   .forEach(function (playButton) {
     playButton.addEventListener("click", function () {
-      togglePlayPause(this);
+      toggleIndividualPlayPause(this);
     });
   });
+
+// Function to update the master play button based on individual song states
+function updateMasterPlayButton() {
+  const allIndividualButtons = document.querySelectorAll(
+    ".lagu i.bi-play-circle-fill"
+  );
+  const masterPlayButton = document.getElementById("playbut");
+
+  const isAnySongPlaying = Array.from(allIndividualButtons).some((button) =>
+    button.classList.contains("bi-pause-circle-fill")
+  );
+
+  if (isAnySongPlaying) {
+    masterPlayButton.classList.remove("bi-pause-circle-fill");
+    masterPlayButton.classList.add("bi-play-circle-fill");
+  } else {
+    masterPlayButton.classList.remove("bi-play-circle-fill");
+    masterPlayButton.classList.add("bi-pause-circle-fill");
+  }
+}
+
+function toggleMasterPlayPause() {
+  const masterPlayButton = document.getElementById("playbut");
+  const isPlaying = masterPlayButton.classList.contains("bi-pause-circle-fill");
+
+  if (isPlaying) {
+    masterPlayButton.classList.remove("bi-pause-circle-fill");
+    masterPlayButton.classList.add("bi-play-circle-fill");
+  } else {
+    masterPlayButton.classList.remove("bi-play-circle-fill");
+    masterPlayButton.classList.add("bi-pause-circle-fill");
+  }
+}
 
 function updateProgressBar() {
   var audioElement = document.getElementById("audioPlayer");
