@@ -1,0 +1,448 @@
+@import url("https://fonts.googleapis.com/css?family=DM Sans");
+* {
+  padding: 0;
+  margin: 0;
+}
+
+@font-face {
+  font-family: "Orelega";
+  src: url("https://fonts.googleapis.com/css?family=Orelega One");
+}
+
+@font-face {
+  font-family: "finger";
+  src: url("Font/Finger_Paint/FingerPaint-Regular.ttf");
+}
+
+@font-face {
+  font-family: "lato";
+  src: url("https://fonts.googleapis.com/css?family=Lato");
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+  font-family: "Dm sans", sans-serif;
+}
+
+/* Background */
+@keyframes move-background {
+  from {
+    -webkit-transform: translate3d(0px, 0px, 0px);
+  }
+  to {
+    -webkit-transform: translate3d(1000px, 0px, 0px);
+  }
+}
+@-webkit-keyframes move-background {
+  from {
+    -webkit-transform: translate3d(0px, 0px, 0px);
+  }
+  to {
+    -webkit-transform: translate3d(1000px, 0px, 0px);
+  }
+}
+
+@-moz-keyframes move-background {
+  from {
+    -webkit-transform: translate3d(0px, 0px, 0px);
+  }
+  to {
+    -webkit-transform: translate3d(1000px, 0px, 0px);
+  }
+}
+
+@-webkit-keyframes move-background {
+  from {
+    -webkit-transform: translate3d(0px, 0px, 0px);
+  }
+  to {
+    -webkit-transform: translate3d(1000px, 0px, 0px);
+  }
+}
+
+audio {
+  display: none;
+}
+
+.background-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -2;
+}
+
+.stars {
+  background: black
+    url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/stars.png) repeat;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  z-index: 0;
+}
+
+.twinkling {
+  width: 10000px;
+  height: 100%;
+  background: transparent
+    url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/twinkling.png")
+    repeat;
+  background-size: 1000px 1000px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+
+  -moz-animation: move-background 70s linear infinite;
+  -ms-animation: move-background 70s linear infinite;
+  -o-animation: move-background 70s linear infinite;
+  -webkit-animation: move-background 70s linear infinite;
+  animation: move-background 70s linear infinite;
+}
+
+.clouds {
+  width: 10000px;
+  height: 100%;
+  background: transparent
+    url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/clouds_repeat.png")
+    repeat;
+  background-size: 1000px 1000px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 3;
+
+  -moz-animation: move-background 150s linear infinite;
+  -ms-animation: move-background 150s linear infinite;
+  -o-animation: move-background 150s linear infinite;
+  -webkit-animation: move-background 150s linear infinite;
+  animation: move-background 150s linear infinite;
+}
+
+/* Isi */
+.gede {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  font-family: "Dm sans", sans-serif;
+  z-index: 1000;
+}
+
+.container1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+  height: 100%;
+}
+
+.container3 {
+  display: flex;
+  width: 30%;
+  height: 100%;
+}
+
+/* Container 1 */
+.profile {
+  display: flex;
+  position: relative;
+  margin: auto;
+  align-items: center;
+  text-align: center;
+  margin-top: 8%;
+  padding: 0 1%;
+  width: 40%;
+  height: 7%;
+  background-color: #0a0a0a;
+  border-radius: 80px;
+  gap: 10%;
+  border: 3px solid #00ffff;
+  box-shadow: 0 0 30px 0 #00a6bc;
+}
+
+.fotoprofile {
+  max-width: 40px;
+  max-height: 85%;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fotoprofile img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  padding-right: 10px;
+}
+
+.profile span {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.lyrics {
+  border: 3px solid #00ffff;
+  box-shadow: 0 0 30px 0 #00a6bc;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 4%;
+  width: 85%;
+  height: 75%;
+  background-color: #181818;
+  border-radius: 30px;
+  ::-webkit-scrollbar {
+    background: #212c41;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #0a0a0a;
+  }
+}
+
+.border_lirik {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 15px;
+  padding: 5px;
+  width: 30%;
+  height: 7%;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 800;
+  background-color: #0a0a0a;
+  border-radius: 80px;
+  border: 3px solid #00ffff;
+  box-shadow: 0 0 10px 0 #00a6bc;
+}
+
+.tekslirik {
+  color: #fff;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  margin-left: 6%;
+  width: 90%;
+  height: 82%;
+  overflow: auto;
+  font-size: 16px;
+}
+
+/* Container 2 */
+.container2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  height: 100%;
+}
+
+.container-title {
+  top: 10px;
+  position: absolute;
+  text-align: center;
+}
+
+.title1 p {
+  margin: 0;
+  text-align: center;
+  color: #fff;
+  font-family: "orelega";
+  font-weight: bolder;
+  font-size: 60px;
+  text-shadow: 0 0 10px #fff, 0 0 30px #00a6bc, 0 0 40px #00a6bc,
+    0 0 55px #00a6bc;
+}
+
+.title2 p {
+  margin: 0;
+  text-align: center;
+  font-family: "finger";
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0 0 15px #fff, 0 0 30px #00a6bc, 0 0 40px #00a6bc,
+    0 0 55px #00a6bc, 0 0 85px #00a6bc;
+}
+
+.masterplay {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 85%;
+  height: 60%;
+  background-color: #181818;
+  border-radius: 30px;
+  border: 3px solid #00ffff;
+  box-shadow: 0 0 30px 0 #00a6bc;
+}
+
+.imgMaster {
+  margin-top: 4%;
+  width: 80%;
+  height: 75%;
+  border-radius: 40px;
+  background-color: red;
+  opacity: 40%;
+}
+
+.imgMaster img {
+  width: 100%;
+  height: 100%;
+  border-radius: 40px;
+  border: 3px solid #00ffff;
+  box-shadow: 0 0 30px 0 #00a6bc;
+}
+
+.judul_masterplay {
+  margin-top: -73px;
+  z-index: 1000;
+}
+
+.judul_mp {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  display: flex;
+  margin-top: 1%;
+  justify-content: center;
+  text-align: center;
+  font-weight: 900;
+  font-size: 22px;
+  line-height: 33px;
+  color: #fff;
+}
+
+.artis_mp {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 16px;
+  color: rgb(160, 159, 159);
+}
+
+.progress-container {
+  display: flex;
+  position: relative;
+  align-items: center;
+  width: 70%;
+  background: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 10px;
+  margin-top: 6%;
+}
+
+.progress {
+  position: relative;
+  background: #0a0a0a;
+  margin: 0.2%;
+  border-radius: 5px;
+  height: 85%;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+.logomaster {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1%;
+  flex-direction: column;
+  font-size: 32px;
+  color: white;
+  padding: 0 10%;
+}
+
+#prevbut {
+  cursor: pointer;
+}
+
+#playbut {
+  cursor: pointer;
+  font-size: 45px;
+}
+#nextbut {
+  cursor: pointer;
+}
+
+/* Container 3 */
+.songlist {
+  width: 88%;
+  height: 95%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.lagu {
+  height: 9.5%;
+  width: 90%;
+  background-color: #181818;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 20px;
+  margin-bottom: 3%;
+  border: 3px solid #00ffff;
+  box-shadow: 0 0 30px 0 #00a6bc;
+}
+
+.imgLagu {
+  height: 80%;
+  width: 100%;
+  max-width: 20%;
+  margin-left: 2%;
+}
+
+.lagu img {
+  max-width: 100%;
+  height: 100%;
+  border-radius: 15px;
+}
+
+.lagu i {
+  font-size: 30px;
+  padding-right: 5%;
+  cursor: pointer;
+  text-shadow: 0 0 20px #00a6bc;
+  transition: all ease-in-out 0.3s;
+}
+
+.lagu i:hover {
+  font-size: 32px;
+  text-shadow: 0 0 20px #00a6bc;
+  overflow: hidden;
+}
+
+.judul_artis {
+  display: row;
+  width: 60%;
+  color: white;
+  text-align: left;
+  padding-left: 5px;
+}
+
+.judul {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.artis {
+  font-size: 12px;
+  color: rgb(160, 159, 159);
+}
